@@ -72,7 +72,7 @@ target_include_directories(pybind11_proto
 
 #============================================================================
 # pybind11_native_proto_caster shared library
-add_library(pybind11_native_proto_caster SHARED
+add_library(pybind11_native_proto_caster
   pybind11_protobuf/enum_type_caster.h
   pybind11_protobuf/native_proto_caster.cc
   pybind11_protobuf/native_proto_caster.h
