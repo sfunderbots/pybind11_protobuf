@@ -10,6 +10,8 @@ project(pybind11_protobuf)
 # Options
 set(ABSL_PROPAGATE_CXX_STD ON)
 set(PYBIND11_FINDPYTHON ON)
+set(CMAKE_CXX_STANDARD 17)
+#set(MAKE_POSITION_INDEPENDENT_CODE ON)
 
 #============================================================================
 # Find Python
@@ -51,7 +53,7 @@ add_subdirectory(external)
 #============================================================================
 # pybind11_proto pybind11 extension module
 pybind11_add_module(pybind11_proto MODULE
-  pybind11_protobuf/proto.cc
+  #pybind11_protobuf/proto.cc
   pybind11_protobuf/proto_utils.cc
   pybind11_protobuf/proto_utils.h
 )
@@ -74,7 +76,7 @@ target_include_directories(pybind11_proto
 # pybind11_native_proto_caster shared library
 add_library(pybind11_native_proto_caster
   pybind11_protobuf/enum_type_caster.h
-  pybind11_protobuf/native_proto_caster.cc
+  #pybind11_protobuf/native_proto_caster.cc
   pybind11_protobuf/native_proto_caster.h
   pybind11_protobuf/proto_cast_util.cc
   pybind11_protobuf/proto_cast_util.h
