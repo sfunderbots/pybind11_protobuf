@@ -11,7 +11,7 @@ project(pybind11_protobuf)
 set(ABSL_PROPAGATE_CXX_STD ON)
 set(PYBIND11_FINDPYTHON ON)
 set(CMAKE_CXX_STANDARD 17)
-#set(MAKE_POSITION_INDEPENDENT_CODE ON)
+set(MAKE_POSITION_INDEPENDENT_CODE ON)
 
 #============================================================================
 # Find Python
@@ -78,6 +78,8 @@ add_library(pybind11_native_proto_caster
   pybind11_protobuf/enum_type_caster.h
   #pybind11_protobuf/native_proto_caster.cc
   pybind11_protobuf/native_proto_caster.h
+  pybind11_protobuf/check_unknown_fields.h
+  pybind11_protobuf/check_unknown_fields.cc
   pybind11_protobuf/proto_cast_util.cc
   pybind11_protobuf/proto_cast_util.h
   pybind11_protobuf/proto_caster_impl.h
@@ -95,7 +97,7 @@ target_link_libraries(pybind11_native_proto_caster
 )
 
 target_include_directories(pybind11_native_proto_caster
-  PRIVATE
+    PUBLIC
     ${PROJECT_SOURCE_DIR}
     ${PROJECT_SOURCE_DIR}/external/protobuf
     ${Protobuf_INCLUDE_DIRS}
@@ -109,6 +111,8 @@ add_library(pybind11_wrapped_proto_caster SHARED
   pybind11_protobuf/proto_cast_util.cc
   pybind11_protobuf/proto_cast_util.h
   pybind11_protobuf/proto_caster_impl.h
+  pybind11_protobuf/check_unknown_fields.h
+  pybind11_protobuf/check_unknown_fields.cc
 )
 
 target_link_libraries(pybind11_wrapped_proto_caster
@@ -123,7 +127,7 @@ target_link_libraries(pybind11_wrapped_proto_caster
 )
 
 target_include_directories(pybind11_wrapped_proto_caster
-  PRIVATE
+    PUBLIC
     ${PROJECT_SOURCE_DIR}
     ${PROJECT_SOURCE_DIR}/external/protobuf
     ${Protobuf_INCLUDE_DIRS}
